@@ -1,9 +1,9 @@
 import { useSelector,useDispatch } from 'react-redux';
-import { logout } from '../../../../redux/userSlice';
-import cerrarSesion from '../../../Scripts/cerrarSesion'
+import { logout } from '../../../redux/userSlice';
+import cerrarSesion from '../../Scripts/cerrarSesion'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
-import getCookie from '../../../Scripts/getCookies';
+import getCookie from '../../Scripts/getCookies';
 import Swal from 'sweetalert2';
 
 function ChangePassword(props){
@@ -111,7 +111,7 @@ function ChangePassword(props){
 
     return(
         <>
-            <div className="modal-dialog">              
+            <div className="modal-dialog modal_users">              
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title">Cambiar la contraseña para:</h5>

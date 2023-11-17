@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import getCookie from "../../../Scripts/getCookies";
-import { changeName } from "../../../../redux/userSlice";
+import getCookie from "../../Scripts/getCookies";
+import { changeName } from "../../../redux/userSlice";
 import Swal from "sweetalert2";
 
 function EditUser(props) {
@@ -86,7 +86,7 @@ function EditUser(props) {
 
   return (
     <>
-      <div className="modal-dialog">
+      <div className="modal-dialog modal_users">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">Editar datos de usuario</h5>
@@ -151,9 +151,8 @@ function EditUser(props) {
                   }}
                   required
                 >
-                  <option value="Admin">Administrador</option>
-                  <option value="Waiter">Mesero</option>
-                  <option value="Chef">Cocinero</option>
+                  <option value="2">Usuario Estandar</option>
+                  <option value="1">Administrador</option>
                 </select>
               </div>
             ) : (

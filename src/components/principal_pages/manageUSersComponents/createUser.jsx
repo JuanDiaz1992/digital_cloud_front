@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import  getCookie  from '../../../Scripts/getCookies';
+import  getCookie  from '../../Scripts/getCookies';
 import Swal from "sweetalert2";
-import '../../../../stylesheets/principal_pages/admin_pages/userManage.css'
+import '../../../stylesheets/principal_pages/admin_pages/userManage.css'
 
 
 function CreateUser(props) {
@@ -35,17 +35,20 @@ function CreateUser(props) {
         const input = event.target
         const value = input.value
         const inputID = input.id
-        const specialCharsRegex = /[!@#$%^&*(),.?":{}|<>\d]/;
+        const specialCharsRegex = /[!@#$%^&*(),.?":{}|<>]/;
 
 
 /*Funcíon que valida caracteres especiales y cantidad de caracteres y cambia las clases de los inputs */
-        const validata = (valueInput,SetValueInput,setInfoInput,message1) => {
+        const validata = (valueInput,SetValueInput,setInfoInput,message1,confirPAssword=false) => {
             if (valueInput.length < 4) {
                 setInfoInput(message1)
                 SetValueInput(false);
             } else if(specialCharsRegex.test(valueInput)){
                 SetValueInput(false);
                 setInfoInput('Este campo no puede contener caracteres especiales')
+            }else if(confirPAssword && valueInput !== password ){
+                setInfoInput("La contraseña debe ser igual a la anterior")
+                SetValueInput(false);
             }
             else {
                 SetValueInput(true);
@@ -68,7 +71,7 @@ function CreateUser(props) {
                 break;
             case 'confirmPassword':
                 message1 = 'La contraseña debe contener más de 4 caracteres y debe ser igual a la anterior';
-                validata(value,setIsValidComfimrPassword,setIsinfoComfirmPassword,message1)
+                validata(value,setIsValidComfimrPassword,setIsinfoComfirmPassword,message1,true)
                 getConfirmPassword(value)
                 break;
             case 'name':
@@ -92,10 +95,8 @@ de cada input no se ve reflejado inmediatamente al momento de la ejecución de l
       useEffect(()=>{
         const specialCharsRegex = /[!@#$%^&*(),.?":{}|<>]/;
         if(userName.length>=4&&!specialCharsRegex.test(userName)&&
-            password.length>=4&&!specialCharsRegex.test(password)&&
-            confirmPassword.length>=4&&name.length>=4&&
-            !specialCharsRegex.test(name)&&
-            !specialCharsRegex.test(confirmPassword)){
+            password.length>=4&&confirmPassword.length>=4&&name.length>=4&&
+            !specialCharsRegex.test(name)){
             setIsValidForm(true)
         }
         else{
@@ -115,7 +116,6 @@ de cada input no se ve reflejado inmediatamente al momento de la ejecución de l
             formData.append('photo',photo)
             formData.append('type_user',type_user)
             formData.append('newUser_request',true)
-
             fetch(url,{
                 method:'POST',
                 body: formData,
@@ -143,12 +143,13 @@ de cada input no se ve reflejado inmediatamente al momento de la ejecución de l
                     Swal.fire({
                         title: "Registrado",
                         text: data.message,
-                        icon: data.results,
+                        icon: "success",
                         confirmButtonText: "Ok",
                         customClass: {
                           container: "notification-modal",
                         },
                       });
+                    props.closeModalEdit()
                 }else{
                     Swal.fire({
                         title: "Error",
@@ -170,7 +171,7 @@ de cada input no se ve reflejado inmediatamente al momento de la ejecución de l
     return(
         <>
             
-            <div className="modal-dialog">
+            <div className="modal-dialog modal_users">
                 <div className="modal-content">
                     <div className="modal-header">
                     <h5 className="modal-title">Crear nuevo usuario:</h5>
@@ -178,23 +179,23 @@ de cada input no se ve reflejado inmediatamente al momento de la ejecución de l
                     </div>
                     <form className="card-body" id="formRegis" onSubmit={sendForm} encType='multipart/form-data'>
                         <div className="mb-3">
-                            <label htmlFor="username" className="label_createUser">Nombre de usuario:</label>
-                            <input type="text" className={isValidUserName ? 'form-control' : 'is-invalid form-control'} id="username" value={userName} onChange={handleChange}/>
+                            <label htmlFor="username" className="label_createUser">Usuario:</label>
+                            <input type="text" className={isValidUserName ? 'form-control' : 'is-invalid form-control'} id="username" value={userName} onChange={handleChange} placeholder="jdue2014"/>
                             <div id="username" className={isValidUserName ? 'd-none' : 'form-text'}>{infoUsername}</div>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="password" className="label_createUser">Contraseña:</label>
-                            <input type="password" className={isValidpassword ? 'form-control' : 'is-invalid form-control'} id="password" value={password} onChange={handleChange}/>
+                            <input type="password" className={isValidpassword ? 'form-control' : 'is-invalid form-control'} id="password" value={password} onChange={handleChange} placeholder="*****"/>
                             <div id="username" className={isValidpassword ? 'd-none' : 'form-text'}>{infoPassword}</div>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="confirmPassword" className="label_createUser">Comfirma la contraseña:</label>
-                            <input type="password" className={isValidComfirmPassword ? 'form-control' : 'is-invalid form-control'} id="confirmPassword" value={confirmPassword} onChange={handleChange}/>
+                            <input type="password" className={isValidComfirmPassword ? 'form-control' : 'is-invalid form-control'} id="confirmPassword" value={confirmPassword} onChange={handleChange} placeholder="*****"/>
                             <div id="username" className={isValidComfirmPassword ? 'd-none' : 'form-text'}>{infoComfirmPassword}</div>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="name" className="label_createUser">Primer nombre y primer apellido:</label>
-                            <input type="text" className={isValidName ? 'form-control' : 'is-invalid form-control'} id="name" value={name} onChange={handleChange}/>
+                            <input type="text" className={isValidName ? 'form-control' : 'is-invalid form-control'} id="name" value={name} onChange={handleChange} placeholder="John Doe"/>
                             <div id="username" className={isValidName ? 'd-none' : 'form-text'}>{infoName}</div>
                         </div>
                         <div className="mb-3">

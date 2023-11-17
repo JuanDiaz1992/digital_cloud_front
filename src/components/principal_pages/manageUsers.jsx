@@ -1,15 +1,14 @@
 import { useSelector } from "react-redux";
-import getCookie from "../../Scripts/getCookies";
+import getCookie from "../Scripts/getCookies";
 import { useState, useEffect } from "react";
 import { confirmAlert } from "react-confirm-alert";
-
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
 import EditUser from "./manageUSersComponents/editUser";
 import ChangePassword from "./manageUSersComponents/changePassword";
 import CreateUser from "./manageUSersComponents/createUser"
-import "../../../stylesheets/principal_pages/admin_pages/userManage.css";
+import "../../stylesheets/principal_pages/admin_pages/userManage.css";
 
 Modal.setAppElement("#root");
 
@@ -126,8 +125,7 @@ function ManageUser() {
   };
 
     /****************Función para crear usuario***********************/
-    const [modalIsOpenCreateUser, setModalIsOpenCreateUser] =
-    useState(false);
+    const [modalIsOpenCreateUser, setModalIsOpenCreateUser] = useState(false);
 
   const openModalCreateUser = () => {
     setModalIsOpenCreateUser(true);

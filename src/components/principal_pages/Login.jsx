@@ -1,6 +1,5 @@
 import "../../stylesheets/principal_pages/login.css";
 import logo from "../../img/logos/logo_3.png";
-import { AiFillCloseCircle } from 'react-icons/ai';
 import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

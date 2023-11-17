@@ -1,5 +1,6 @@
 .section_index{
-    height: 85vh;
+    background: hsl(0, 0%, 87%);
+    height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,12 +18,49 @@
     border-radius: 5px;
     width: 190px;
     height: 170px;
-    background-color: aqua;
+    background-color: rgb(163, 163, 163);
 }
-
+.card_index h3{
+    margin-left: 10px;
+}
+.card_docs,
+.card_user, 
+.card_notifications,
+.card_humana{
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 80%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.card_user{
+    background-image: url(../../img/12704341_5051402.jpg);
+}
+.card_docs{
+    background-image: url(../../img/docs.jpg);
+}
+.card_notifications{
+    background-image: url(../../img/notifications.jpg);
+}
+.card_humana{
+    background-image: url(../../img/G_humana.jpg);
+}
 @media screen and (max-width: 481px) {
+    .section_index {
+        width: 100%;
+        padding: 90px 0 20px 0;
+        height: fit-content;
+
+    }
+    .cards_container{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     .card_index{
-        width: 140px;
-        height: 120px;
+        width: 100%;
     }
 }

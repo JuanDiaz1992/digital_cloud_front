@@ -1,12 +1,12 @@
 import React from "react";
 import {HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-
+import Documents from "../components/principal_pages/documents"
 import FatherComponent from '../components/father';
 import Error404 from '../components/error404'
 import Index from '../components/principal_pages/index';
 import Login from '../components/principal_pages/Login';
-import ManageUser from "../components/principal_pages/admin_pages/manageUsers";
+import ManageUser from "../components/principal_pages/manageUsers";
 
 
 function AppRouter(){
@@ -16,25 +16,18 @@ function AppRouter(){
             <HashRouter>
                 <Routes>
                     <Route path="/" element={<FatherComponent />}>
+                        <Route path="/login" element={<Login />}/>
                         <Route path="*" element={<Error404 />}/>
                         <Route path="/Error404" element={<Error404 />}/>
-                        {type_user === 1 ? (
+                        {type_user === 1 &&(
                             <>
-                                <Route path="/ManageUser" element={<ManageUser />}/>
+                                <Route path="/manageUser" element={<ManageUser />}/>
                             </>
-                            ) : (
-                            <Route path='*' element={<Navigate to='/Error404' replace />} />
-                        )}
-                        {type_user === 0? (
-                            <>
-                                <Route path="/login" element={<Login />}/>
-                            </>
-                            ) : (
-                            <Route path='*' element={<Navigate to='/Error404' replace />} />
-                        )} 
-                        {type_user !== ''? (
+                            )}
+                        {type_user >0? (
                             <>
                                 <Route index element={<Index/>}/>
+                                <Route path="/documents" element={<Documents />}/>
                             </>
                             ) : (
                             <Route path='*' element={<Navigate to='/Error404' replace />} />

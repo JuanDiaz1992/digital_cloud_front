@@ -33,7 +33,7 @@
 
 
 .section_editUser{
-    height: 100vh;
+    height: 95vh;
     background-color: #edeef0;
     padding: 80px 5px 5px 5px;
     display: flex;
@@ -67,7 +67,8 @@
     margin-left: 10px;
 }
 
-.modal-dialog{
+.modal_users{
+
     width: 100% !important;
     max-width: 500px !important;
 }
