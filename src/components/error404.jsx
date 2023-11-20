@@ -5,7 +5,7 @@ function Error404(){
     return(
         <>
             <section className="sectionError404">
-                404
+               
             </section>
             
         </>

@@ -41,7 +41,9 @@
     margin-left: 10px;
 }
 .card_upload,
-.card_view_bills{
+.card_view_bills,
+.card_view_create_bills,
+.card_view_supplies{
     border-radius: 5px 5px 0 0;
     width: 100%;
     height: 80%;
@@ -55,12 +57,13 @@
 .card_view_bills{
     background-image: url(../../img/viewBill.jpg);
 }
-.card_notifications{
-    background-image: url(../../img/notifications.jpg);
+.card_view_create_bills{
+    background-image: url(../../img/billCreate.jpg);
 }
-.card_humana{
-    background-image: url(../../img/G_humana.jpg);
+.card_view_supplies{
+    background-image: url(../../img/inventory.jpg);
 }
+
 
 .modal_view_bills{
     width: 100% !important;
@@ -78,3 +81,9 @@
 .img_bill{
     width: 100px;
 }
+
+.styles-module_image__2hdkJ{
+    max-width: none !important;
+    max-height: none !important;
+    width: 50% !important;
+} 

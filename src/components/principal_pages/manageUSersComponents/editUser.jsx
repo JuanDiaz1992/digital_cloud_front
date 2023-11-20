@@ -14,7 +14,6 @@ function EditUser(props) {
   const [nameIsOK, setNameIsOk] = useState(true);
   const [typeUser, settypeUser] = useState(props.typeUser);
   const [photoInput, getPhoto] = useState();
-
   const handlreChange = (e) => {
     let nUser = e.target.value;
     setnameUSer(nUser);

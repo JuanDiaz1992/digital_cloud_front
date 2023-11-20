@@ -35,6 +35,14 @@ function Documents(){
                         <div className="card_view_bills"></div>
                         <h3>Ver facturas</h3>
                     </div>
+                    <div className="card_documents">
+                        <div className="card_view_create_bills"></div>
+                        <h3>Crear factura</h3>
+                    </div>
+                    <div className="card_documents">
+                        <div className="card_view_supplies"></div>
+                        <h3>Suministros</h3>
+                    </div> 
                 </div>
 
             </section>
