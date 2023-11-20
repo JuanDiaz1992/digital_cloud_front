@@ -49,7 +49,7 @@ function ViewBills({ closeModal }) {
     }catch(error){
       console.log(error);
     }
-  },[dateToConsult]);
+  },[dateToConsult,url]);
   return (
     <>
       <div className="modal-dialog modal_view_bills">
