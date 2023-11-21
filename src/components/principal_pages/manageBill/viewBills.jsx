@@ -44,6 +44,7 @@ function ViewBills({ closeModal }) {
 
         }else{
           setBills([]);
+          setImgs([]);
         }
       })
     }catch(error){
@@ -81,7 +82,6 @@ function ViewBills({ closeModal }) {
                 </tr>
               </thead>
               <tbody>
-
                   {imgs.map((img,index)=>(
                     <tr key={index}>
                       <th scope="row">{bills[index]["id_factura"]}</th>
@@ -95,7 +95,6 @@ function ViewBills({ closeModal }) {
                       <td colSpan="2">{bills[index]["total"]}</td>
                     </tr>
                   ))}
-
               </tbody>
             </table>
             :
